@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:udmurahmotor/FuctionHelper/flusbar.dart';
 
 import '../../../model/getorderbystatus_and _userid.dart';
 import '../../../service/order/getorder.dart';
+import '../../../service/order/updatestatus.dart';
 import '../appbar.dart';
 import '../sidebar.dart';
 
@@ -15,6 +17,7 @@ class Orderdatboard extends StatefulWidget {
 class _OrderdatboardState extends State<Orderdatboard> {
   final textformfieldrool = TextEditingController();
   final order = Getorder();
+  final updatestatus = Updatestatus();
   @override
   Widget build(BuildContext context) {
     var Mediawidth = MediaQuery.of(context).size.width;
@@ -174,7 +177,17 @@ class _OrderdatboardState extends State<Orderdatboard> {
                                   child: Text(d.barang!.namabarang!.toString()),
                                 ),
                                 InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    updatestatus
+                                        .updatestatusorder(3, d.id)
+                                        .then((value) {
+                                      if (value["mesage"] ==
+                                          "update data sucsess") {
+                                        flusbartop(context,
+                                            "berhasil disetujui", Colors.green);
+                                      }
+                                    });
+                                  },
                                   child: Container(
                                     width: Mediawidth / 7,
                                     // height: Mediaheight / 9,

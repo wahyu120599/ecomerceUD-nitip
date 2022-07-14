@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:udmurahmotor/model/getorderbystatus_and%20_userid.dart';
+import 'package:udmurahmotor/pages/Profile/statevariable.dart';
 import 'package:udmurahmotor/pages/Profile/wigetfuction.dart';
 
 import '../../service/order/getorder.dart';
-import 'cardlist.dart';
+import 'bayar.dart';
+import 'carddiseujui.dart';
+
+import 'cardmenunggupersetujuan.dart';
 import 'urllauch.dart';
 
 class Profile extends StatefulWidget {
@@ -14,6 +19,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  final Statevariable statevariable = Get.put(Statevariable());
   var getorder = Getorder();
   @override
   Widget build(BuildContext context) {
@@ -128,6 +134,7 @@ class _ProfileState extends State<Profile> {
                         Container(
                           height: MediaQuery.of(context).size.height / 1.7,
                           child: TabBarView(children: <Widget>[
+                            //tabarview1
                             Container(
                                 child: FutureBuilder<List<Dataorder>>(
                               future: getorder.getorder(2),
@@ -137,12 +144,8 @@ class _ProfileState extends State<Profile> {
                                     itemCount: snapshot.data?.length,
                                     itemBuilder: (context, index) {
                                       final d = snapshot.data?[index];
-                                      return cardlist(
-                                        barangname:
-                                            d!.barang!.namabarang.toString(),
-                                        text: Text("menuggu persetujuan"),
-                                        harga: d.barang!.harga!.toInt(),
-                                        from: "order",
+                                      return Menugupersetujuan(
+                                        data: snapshot.data?[index],
                                       );
                                     },
                                   );
@@ -155,11 +158,12 @@ class _ProfileState extends State<Profile> {
                                 }
                               },
                             )),
+                            //tabarview2
                             Container(
                                 // height: MediaQuery.of(context).size.height / 1.4,
                                 // color: Colors.amber,
                                 child: FutureBuilder<List<Dataorder>>(
-                              future: getorder.getorder(2),
+                              future: getorder.getorder(3),
                               builder: (context, snapshot) {
                                 if (snapshot.hasData) {
                                   return ListView.builder(
@@ -167,14 +171,17 @@ class _ProfileState extends State<Profile> {
                                     itemCount: snapshot.data?.length,
                                     itemBuilder: (context, index) {
                                       final d = snapshot.data?[index];
-                                      return cardlist(
-                                        barangname:
-                                            d!.barang!.namabarang.toString(),
-                                        text: Text(
-                                            "orderan anda disetujui segera lakukan pembayaran"),
-                                        harga: d.barang!.harga!.toInt(),
-                                        from: "disetujui",
+                                      return Disetujui(
+                                        data: snapshot.data![index],
                                       );
+                                      // return cardlist(
+                                      //   barangname:
+                                      //       d!.barang!.namabarang.toString(),
+                                      //   text: Text(
+                                      //       "orderan anda disetujui segera lakukan pembayaran"),
+                                      //   harga: d.barang!.harga!.toInt(),
+                                      //   from: "disetujui",
+                                      // );
                                     },
                                   );
                                 } else {
@@ -186,6 +193,7 @@ class _ProfileState extends State<Profile> {
                                 }
                               },
                             )),
+                            //tabarview3
                             Container(
                                 child: Center(
                               child: Text('Display Tab 1',

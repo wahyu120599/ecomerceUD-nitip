@@ -58,7 +58,9 @@ class _SidebarState extends State<Sidebar> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, "/Dasbord");
+                  },
                   child: Container(
                     child: ListTile(
                       title: Text("Dasboard"),

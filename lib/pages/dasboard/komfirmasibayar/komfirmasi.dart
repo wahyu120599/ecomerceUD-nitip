@@ -49,7 +49,7 @@ class _KomfirmasiState extends State<Komfirmasi> {
             .cretekomfir(namacontroller.text, emailcontroller.text,
                 no_wacontroller.text, no_telponcontroller.text)
             .then((value) {
-          if (value["mesage"] == "create data sucsess") {
+          if (value.message == "create data sucsess") {
             Navigator.pop(context);
             flusbartop(context, "${namacontroller.text} berhasil dibuat",
                 Colors.green);

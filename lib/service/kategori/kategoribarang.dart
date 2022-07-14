@@ -1,4 +1,5 @@
 import 'package:http/http.dart' as http;
+import 'package:udmurahmotor/model/getkategoribarangbyid.dart';
 import 'dart:convert' as convert;
 
 import '../../model/getkategoribarang.dart';
@@ -41,6 +42,16 @@ class Kategoribarangserv {
     } else {
       return databarang;
     }
+  }
+
+  Future<Getkategoribyid> getkategoribyid(id) async {
+    var url = "https://endpoindud.devmee.tech/getkategoribarangbyid/${id}";
+    var get = await http.get(Uri.parse(url));
+    if (get.statusCode == 200) {
+      print("get kategori 200 ok");
+      return Getkategoribyid.fromjson(convert.jsonDecode(get.body));
+    }
+    return Getkategoribyid.fromjson(convert.jsonDecode(get.body));
   }
 
   Future deletekategori(

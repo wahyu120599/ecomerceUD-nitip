@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
-class Addbarang {
+class Updatestatus {
   Future updatestatusorder(statusorder, id) async {
     var url = "https://endpoindud.devmee.tech/updaterorderstatus/${id}";
     var body = {

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:udmurahmotor/pages/dasboard/sidebar.dart';
 
+import '../../service/komfirmasibayar/komfirmasi.dart';
 import 'appbar.dart';
+import 'usercomfir/usercomfir.dart';
 
 class Dasbord extends StatefulWidget {
   const Dasbord({Key? key}) : super(key: key);
@@ -16,8 +18,14 @@ class _DasbordState extends State<Dasbord> {
     return Scaffold(
       drawer: Sidebar(),
       appBar: dsboardappbar(context),
-      body: ListView(
-        children: [],
+      body: Container(
+        padding: EdgeInsets.all(5),
+        child: ListView(
+          children: [
+            //user komfir
+            Userkmfir(),
+          ],
+        ),
       ),
     );
   }

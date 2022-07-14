@@ -30,27 +30,38 @@ class _UrllauchState extends State<Urllauch> {
     await launch("mailto:$email");
   }
 
+  Future tel(String phone) async {
+    await launch("tel:${phone}");
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         if (widget.title == "Whatshapp") {
           whatsapp("+6287865537114");
-        } else {
+        } else if (widget.title == "Email") {
           email("jekomontainugrah@gmail.com");
+        } else {
+          tel("+6287865537114");
         }
       },
       child: Container(
+          margin: EdgeInsets.all(3),
           child: Column(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.width / 7,
-            width: MediaQuery.of(context).size.width / 7,
-            child: widget.icon,
-          ),
-          Text("Whatshapp")
-        ],
-      )),
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.width / 8,
+                width: MediaQuery.of(context).size.width / 8,
+                child: widget.icon,
+              ),
+              Text((widget.title == "Whatshapp")
+                  ? "Whatshapp"
+                  : (widget.title == "Email")
+                      ? "Email"
+                      : "Telpon")
+            ],
+          )),
     );
   }
 }

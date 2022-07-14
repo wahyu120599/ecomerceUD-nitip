@@ -38,6 +38,14 @@ dependencies:
   carousel_slider: ^4.1.1
   url_launcher: ^6.1.0
   intl: ^0.17.0
+  shimmer: ^2.0.0
+  syncfusion_flutter_charts: ^20.1.61
+  get: ^4.6.5
+  internet_connection_checker: 
+  path_provider: ^2.0.11
+  screenshot: ^1.2.3
+  image_gallery_saver: '^1.7.1'
+  permission_handler: ^6.1.1
 
 
   # The following adds the Cupertino Icons font to your application.

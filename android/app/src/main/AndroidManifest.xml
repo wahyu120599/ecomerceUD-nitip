@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.udmurahmotor">
-
+   
     <queries>
               <!-- If your app opens https URLs -->
               <intent>
@@ -27,6 +27,7 @@
    <application
         android:label="udmurahmotor"
         android:icon="@mipmap/ic_launcher">
+        android:requestLegacyExternalStorage="true"
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

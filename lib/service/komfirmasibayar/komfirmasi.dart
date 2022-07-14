@@ -7,16 +7,15 @@ class Komfirmasibayar {
   Future cretekomfir(nama, email, no_wa, no_telp) async {
     var url = "https://endpoindud.devmee.tech/createKonfirmasi";
     var body = {
-      "nama": nama,
-      "email": email,
-      "no_wa": no_wa,
-      "no_telpon": no_telp,
+      "nama": nama.toString(),
+      "email": email.toString(),
+      "no_wa": no_wa.toString(),
+      "no_telpon": no_telp.toString(),
     };
     var post = await http.post(Uri.parse(url), body: body);
     if (post.statusCode == 200) {
       return convert.jsonDecode(post.body);
     } else {
-      print(convert.jsonDecode(post.body));
       return convert.jsonDecode(post.body);
     }
   }

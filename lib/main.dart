@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:udmurahmotor/pages/Detail/detail.dart';
 import 'package:udmurahmotor/pages/Login/login.dart';
 import 'package:udmurahmotor/pages/cart/cart.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       initialRoute: '/',
       routes: {
         '/': (context) => const Cekstatuslogin(),
